@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Opções da Extensão</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 500px; margin: auto; }
+        h1 { font-size: 22px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #007BFF; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #status { margin-top: 15px; font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+    <h1>Configurações</h1>
+    <p>Insira seu token da API Focus NFe para poder realizar as consultas de CNPJ.</p>
+    
+    <label for="token">Token da API:</label>
+    <input type="text" id="token" placeholder="Cole seu token aqui">
+    
+    <button id="save">Salvar Token</button>
+    
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+</body>
+</html>
