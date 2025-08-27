@@ -19,10 +19,20 @@ openWhatsAppButton.addEventListener('click', () => {
         return;
       }
       const phone = results[0].result;
-      // Troca o protocolo para a URL do WhatsApp Web
       const sendUrl = `https://web.whatsapp.com/send?phone=${phone}`;
-      // Usa a API do Chrome para criar uma nova aba, que é mais confiável
-      chrome.tabs.create({ url: sendUrl });
+
+      // Primeiro procura se já existe uma aba com WhatsApp Web aberta
+      chrome.tabs.query({ url: "https://web.whatsapp.com/*" }, whatsTabs => {
+        if (whatsTabs.length > 0) {
+          // Usa a primeira aba encontrada
+          const waTab = whatsTabs[0];
+          chrome.tabs.update(waTab.id, { url: sendUrl, active: true });
+          chrome.windows.update(waTab.windowId, { focused: true });
+        } else {
+          // Se não existe, cria uma nova
+          chrome.tabs.create({ url: sendUrl });
+        }
+      });
     });
   });
 });
